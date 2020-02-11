@@ -10,7 +10,22 @@ const Orders = require("../models/order");
 // @access  Public
 router.get("/", (req, res) => {
   Orders.find()
-    .then(orders => res.json(orders))
+    .then(orders => {
+      const ordersOnCurrentPage = utils.paging(orders, 0);
+      res.json(ordersOnCurrentPage);
+    })
+    .catch(err => res.json(err));
+});
+
+// @route   GET api/orders/:pageID
+// @desc    Get orders by page
+// @access  Public
+router.get("/:pageID", (req, res) => {
+  Orders.find()
+    .then(orders => {
+      const ordersOnCurrentPage = utils.paging(orders, +req.params.pageID);
+      res.json(ordersOnCurrentPage);
+    })
     .catch(err => res.json(err));
 });
 

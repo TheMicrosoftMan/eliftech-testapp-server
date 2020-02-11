@@ -2,9 +2,11 @@ const express = require("express");
 const formidableMiddleware = require("express-formidable");
 const mongoose = require("mongoose");
 const app = express();
+const cors = require("cors");
 
 require("dotenv").config();
 
+app.use(cors());
 app.use(express.json());
 app.use(formidableMiddleware());
 app.use("/api/orders", require("./api/orders"));

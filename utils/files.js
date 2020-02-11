@@ -1,11 +1,12 @@
 const csv = require("csv-parser");
 const fs = require("fs");
-const results = [];
 
 const fileUtils = {};
 
 function readFileForExport(file) {
   return new Promise((resolve, reject) => {
+    const results = [];
+    
     try {
       fs.createReadStream(file.path)
         .pipe(csv({ separator: ";" }))
