@@ -1,0 +1,19 @@
+{
+  "name": "eliftech-testapp-server",
+  "version": "1.0.0",
+  "description": "ElifTech test app server side",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheMicrosoftMan",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^2.3.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.11"
+  }
+}
