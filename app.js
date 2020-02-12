@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(formidableMiddleware());
 app.use("/api/orders", require("./api/orders"));
+app.use("/api/export", require("./api/export"));
 
 app.listen(process.env.PORT, () => {
   console.log("Servers is working");
