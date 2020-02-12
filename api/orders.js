@@ -52,9 +52,9 @@ router.post("/", (req, res) => {
 // @access  Public
 router.post("/upload", async (req, res) => {
   const files = req.files;
-  const parsedFileObj = await utils.readFileForExport(files.file);
+  try {
+    const parsedFileObj = await utils.readFileForExport(files.file);
 
-  if (parsedFileObj.ok) {
     const newOrders = parsedFileObj.orders.map(
       order =>
         new Orders({
@@ -68,8 +68,8 @@ router.post("/upload", async (req, res) => {
     Orders.insertMany(newOrders)
       .then(orders => res.json(orders))
       .catch(err => res.json(err));
-  } else {
-    res.json("Something went wrong");
+  } catch (error) {
+    res.status(400).send(error);
   }
 });
 
